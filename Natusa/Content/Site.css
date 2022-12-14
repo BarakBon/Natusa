@@ -28,3 +28,17 @@ textarea {
     background-color: #777;
     border-color: #fff
 }
+
+.navbar-nav > li {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 7px;
+    font-size: 20px;
+    border-radius: 15px;
+    border: 1px solid #777;
+    box-shadow: 10px 10px 20px -10px #423e3e;
+}
+
+.site-name {
+    margin-right: 50px;
+}
