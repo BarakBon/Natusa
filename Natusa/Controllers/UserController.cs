@@ -9,7 +9,7 @@ namespace Natusa.Controllers
     public class UserController : Controller
     {
         // GET: User
-        public ActionResult Index()
+        public ActionResult Search()
         {
             return View();
         }
