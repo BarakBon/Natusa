@@ -32,12 +32,16 @@ textarea {
 .navbar-nav > li {
     margin-left: 20px;
     margin-right: 20px;
-    margin-top: 7px;
+    margin-top: 2px;
     font-size: 20px;
-    border-radius: 15px;
-    border: 1px solid #777;
-    box-shadow: 10px 10px 20px -10px #423e3e;
+    border-radius: 10px;
+    border-bottom: 2px solid #3495be;
 }
+
+    .navbar-nav > li:hover {
+        margin-top: -3px;
+        transition: margin 0.2s ease-in-out;
+    }
 
 .site-name {
     margin-right: 50px;
