@@ -11,7 +11,7 @@ namespace Natusa.Controllers
         // GET: User
         public ActionResult Search()
         {
-            return View();
+            return View("SearchView");
         }
     }
 }

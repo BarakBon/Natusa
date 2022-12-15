@@ -2,10 +2,30 @@
 @{
     ViewBag.Title = "SearchView";
 }
+<link href="~/CSS/SearchStyle.css" rel="stylesheet" />
 
 <h2>SearchView</h2>
 <div>
     <form>
-        <input autocomplete="country" type="text" id="dep_country" name="dep_country" placeholder="Departure Country"/>
+        <span class="searchInput">
+            <input autocomplete="country" type="text" id="fromCountry" name="fromCountry" placeholder="From?" size="20" />
+            <input autocomplete="country" type="text" id="toCountry" name="toCountry" placeholder="To?" size="20" />
+            <input type="text" id="depDate" name="depDate" placeholder="When?" size="12" onfocus="(this.type='date')" onblur="(this.type='text')" />
+            <input type="text" id="depTime" name="depTime" placeholder="At?" size="5" onfocus="(this.type='time')" onblur="(this.type='text')" />
+        </span>
+        <br><br />
+        <span>
+            <input type="radio" checked="checked" name="wayRadio">
+            One Way
+            &nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="wayRadio">
+            Both Way
+        </span>
+        <br><br />
+        <span class="searchInput">
+            <input type="text" id="retDate" name="retDate" placeholder="When to return?" size="12" onfocus="(this.type='date')" onblur="(this.type='text')" />
+            <input type="text" id="retTime" name="retTime" placeholder="Return at?" size="5" onfocus="(this.type='time')" onblur="(this.type='text')" />            
+        </span>
+        <input type="submit" id="searchBtn" value="SEARCH" />
     </form>
 </div>
