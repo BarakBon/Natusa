@@ -3,6 +3,21 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<link href="~/CSS/LoginStyle.css" rel="stylesheet" />
 
 <h2>Login Page</h2>
+
+<div>
+    <form class="form-structor">
+        <div class="text-structor">
+            <img src="~/Content/site_name.png"  />
+            <br /> <br />
+            <label class="Login-text"> Mail :</label>  <input name="mail" type="email" placeholder="Mail" />
+            <br />
+            <label class="Login-text"> Password :</label>  <input name="password" type="text" placeholder="Password" />
+            <br />
+            <input type="submit" value="Login" class="Login-text" />
+        </div>
+    </form>
+</div>
 
