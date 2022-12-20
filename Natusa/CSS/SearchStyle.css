@@ -1,4 +1,6 @@
-﻿.searchInput {
+﻿
+
+.searchInput {
     padding: 30px;
     border-radius: 10px;
     background: #F3F3F3;
@@ -9,7 +11,6 @@
 .searchInput > input {
     padding: 10px;
     border-radius: 10px;
-    background: #F3F3F3;
     border: 2px groove;
     border-color: #3495be;
     margin: 10px;
@@ -18,7 +19,6 @@
 #searchBtn {
     padding: 10px 20px;
     border-radius: 10px;
-    background: #F3F3F3;
     margin: 20px;
     background-color: #bed5f5;
 }
@@ -26,3 +26,4 @@
 #searchPage {
     text-align: center;
 }
+
