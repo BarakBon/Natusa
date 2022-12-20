@@ -22,3 +22,9 @@
     margin: 20px;
     background-color: #bed5f5;
 }
+
+#searchPage {
+    margin: auto;
+    width: 70%;
+    text-align: center;
+}
