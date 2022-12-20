@@ -1,31 +1,39 @@
-﻿
-.form-structor {
+﻿.form-structor {
     margin: auto;
-    width: 60%;
-    border: 3px solid #73AD21;
-    padding: 10px;
-
-    height: 350px;
-    width: 380px;
+    text-align : center;
+    padding: 60px;
+    height: 420px;
+    width: 450px;
     position: relative;
-    overflow: hidden;
+    //overflow: auto;
     border: 2px dashed;
     border-color: #3495be;
     border-radius: 10px;
-    
 }
 
-.text-structor {
-    border: 50%;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    transform: translate(0, -50%);
-    padding: 10px;
-    line-height: 1.6;
-    
-}
 
 .Login-text {
-    margin-top: 15px;
+    text-align : center;
+    padding: 10px;
+    border-radius: 10px;
+    background: #F3F3F3;
+    border: 2px groove;
+    border-color: #3495be;
+    margin: 10px;
 }
+
+#test {
+    text-align: center;
+    padding : 10px;
+}
+
+#Login-submit {
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px groove;
+    cursor: pointer;
+    width: 80px;
+    margin : auto;
+}
+
+
