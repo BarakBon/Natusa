@@ -13,7 +13,7 @@
         <span class="searchInput">
             <input autocomplete="country" type="text" id="fromCountry" name="fromCountry" placeholder="From?" size="20" />
             <input autocomplete="country" type="text" id="toCountry" name="toCountry" placeholder="To?" size="20" />
-            <input type="text" id="depDate" name="depDate" placeholder="When?" size="12" onfocus="(this.type='date')" onblur="(this.type='text')"/>
+            <input type="text" id="depDate" name="depDate" placeholder="When?" size="12" onfocus="(this.type='date')" onblur="(this.type='text')" />
             <input type="text" id="depTime" name="depTime" placeholder="At?" size="5" onfocus="(this.type='time')" onblur="(this.type='text')" />
         </span>
         <br><br />
@@ -27,8 +27,32 @@
         <br><br />
         <span class="searchInput returnInput">
             <input type="text" id="retDate" name="retDate" placeholder="When to return?" size="12" onfocus="(this.type='date')" onblur="(this.type='text')" />
-            <input type="text" id="retTime" name="retTime" placeholder="Return at?" size="5" onfocus="(this.type='time')" onblur="(this.type='text')" />            
+            <input type="text" id="retTime" name="retTime" placeholder="Return at?" size="5" onfocus="(this.type='time')" onblur="(this.type='text')" />
         </span>
         <input type="submit" id="searchBtn" value="SEARCH" />
     </form>
+
+    <br><br />
+    <br><br />
+    <table id="flightSearchResults">
+        <tr id="tableHeaders">
+            <th><u>Flight ID</u></th>
+            <th><u>Origin</u></th>
+            <th><u>Date</u></th>
+            <th><u>Departure</u></th>
+            <th><u>Destination</u></th>
+            <th><u></u></th>
+        </tr>
+
+        <tr>
+            <form>
+                <td>RS356</td>
+                <td>ISRAEL</td>
+                <td>22/12/2022</td>
+                <td>02:25</td>
+                <td>GERMANY</td>
+                <th><input type="submit" value="SELECT" /></th>
+            </form>
+        </tr>
+    </table>
 </div>

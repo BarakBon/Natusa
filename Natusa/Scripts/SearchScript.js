@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
 
-    $(".returnInput").css({ "display": "none" });
 
     $("#depDate").attr({ "min": new Date().toJSON().split('T')[0] })
 
