@@ -1,29 +1,27 @@
 ﻿
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "registration";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/CSS/LoginStyle.css" rel="stylesheet" />
 
-<br /> <br /> <br />
+<h2>registration</h2>
 
 <div>
     <form class="form-structor">
         <div class="text-structor">
-            <img src="~/Content/site_name.png" />
-            <br /> <br />
+            <input name="fname" type="text" placeholder="First Name" class="Login-text" />
+            <br />
+            <input name="lname" type="text" placeholder="Last Name" class="Login-text" />
+            <br />
             <input name="mail" type="email" placeholder="Mail" class="Login-text" />
             <br />
             <input name="password" type="text" placeholder="Password" class="Login-text" />
             <br />
         </div>
         <div id="test">
-            <input type="submit" value="Login" id="Login-submit" />
-            <br />
-            <p> <a href=" /Home/Registration ">not registered?</a> </p> 
+            <input type="submit" value="register" id="Login-submit" />
         </div>
-            
-
     </form>
 </div>
 

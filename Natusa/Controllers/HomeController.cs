@@ -31,5 +31,10 @@ namespace Natusa.Controllers
         {
             return View();
         }
+
+        public ActionResult registration()
+        {
+            return View();
+        }
     }
 }
