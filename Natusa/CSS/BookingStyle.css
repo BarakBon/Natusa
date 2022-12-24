@@ -1,0 +1,33 @@
+﻿.grid-container-75 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+}
+
+.grid-container-50 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    padding: 2px 16px;
+    background-color: #f2f2f2;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+
+.inputs > input {
+    width: 50%;
+    margin-bottom: 20px;
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 120%
+}
+
+.summery {
+    background-color: #f2f2f2;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    height: fit-content;
+}
+
+

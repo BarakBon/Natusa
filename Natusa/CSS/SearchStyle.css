@@ -17,15 +17,25 @@
 }
 
 #searchBtn {
-    padding: 10px 20px;
-    border-radius: 10px;
-    margin: 20px;
-    background-color: #3495be;
+    cursor: pointer;
+    border: transparent;
+    background: transparent;
+    
 }
+    #searchBtn > img {
+        width: 60px;
+        height: 60px;
+    }
 
-#searchPage {
-    text-align: center;
-}
+        #searchBtn > img:hover {
+            transform: rotate(90deg);
+            transition: transform 0.7s ease-in-out;
+        }
+
+
+    #searchPage {
+        text-align: center;
+    }
 
 .returnInput {
     display: none;
@@ -58,4 +68,12 @@ td > input {
 
     td > input:focus {
         outline: none;
+    }
+
+#selectFlight {
+    color: #3495be
+}
+
+    #selectFlight:hover {
+        border-bottom: 1px solid #3495be;
     }

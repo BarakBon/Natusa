@@ -31,10 +31,11 @@
             <input type="text" id="retDate" name="retDate" placeholder="When to return?" size="12" onfocus="(this.type='date')" onblur="(this.type='text')" />
             <input type="text" id="retTime" name="retTime" placeholder="Return at?" size="5" onfocus="(this.type='time')" onblur="(this.type='text')" />
         </span>
-        <input type="submit" id="searchBtn" value="SEARCH" />
+        <button type="submit" id="searchBtn"><img src="~/Content/search-btn.png" alt="search" border="0" /> </button>
     </form>
 
     <br><br />
+    <hr />
     <br><br />
     <table id="flightSearchResults">
         <tr id="tableHeaders">
@@ -48,14 +49,14 @@
         </tr>
 
         <tr id="tableResults">
-            <form>
+            <form action="Booking" method="post">
                 <td> <input type="text" id="flightID" name="flightID" value="RS851" size="10" readonly/> </td>
                 <td>ISRAEL</td>
                 <td>22/12/2022</td>
                 <td>02:25</td>
                 <td>GERMANY</td>
                 <td>150$</td>
-                <th><input type="submit" value="SELECT" /></th>
+                <td><input type="submit" id="selectFlight" value="SELECT" /></td>
             </form>
         </tr>
     </table>
