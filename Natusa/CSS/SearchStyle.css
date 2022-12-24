@@ -41,5 +41,21 @@
 #tableHeaders > th {
     text-align: center;
     border-bottom: 1px solid #3495be;
-    font-size:150%;
+    font-size:170%;
 }
+
+#tableResults > td {
+    font-size: 120%;
+}
+
+td > input {
+    text-align: center;
+    background: transparent;
+    border: transparent;
+    font-size: 110%;
+    
+}
+
+    td > input:focus {
+        outline: none;
+    }

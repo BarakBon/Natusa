@@ -1,6 +1,8 @@
-﻿
+﻿@model Natusa.ViewModel.FlightsViewModel
+@using Natusa.Models
+
 @{
-    ViewBag.Title = "SearchView";
+    ViewBag.Title = "Search";
 }
 <link href="~/CSS/SearchStyle.css" rel="stylesheet" />
 <script src="~/Scripts/jquery-3.4.1.js"></script>
@@ -9,7 +11,7 @@
 
 <h2>SearchView</h2>
 <div id="searchPage">
-    <form>
+    <form action="SearchResults" method="post">
         <span class="searchInput">
             <input autocomplete="country" type="text" id="fromCountry" name="fromCountry" placeholder="From?" size="20" />
             <input autocomplete="country" type="text" id="toCountry" name="toCountry" placeholder="To?" size="20" />
@@ -45,9 +47,9 @@
             <th><u></u></th>
         </tr>
 
-        <tr>
+        <tr id="tableResults">
             <form>
-                <td>RS356</td>
+                <td> <input type="text" id="flightID" name="flightID" value="RS851" size="10" readonly/> </td>
                 <td>ISRAEL</td>
                 <td>22/12/2022</td>
                 <td>02:25</td>
