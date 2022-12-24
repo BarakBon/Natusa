@@ -10,6 +10,6 @@ namespace Natusa.ViewModel
     {
         public Flight flight { get; set; }
 
-        public List<Flight> flights { get; set;}
+        public List<Flight> flightsList { get; set;}
     }
 }
