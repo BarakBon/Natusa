@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using Natusa.Dal;
+using System.Diagnostics;
 
 namespace Natusa.Models
 {
-    public class Flight
+    public class Flights
     {
         [Key]
-        public String flightNum {get; set;}
+        public String flightNum { get; set;}
+
+        public String destination { get; set; }
 
         public String origin { get; set;}
 
@@ -17,8 +21,9 @@ namespace Natusa.Models
 
         public String flightTime { get; set;}
 
-        public String destination { get; set;}
+        public int price { get; set; }
 
         public int availableSeats { get; set;}                
     }
 }
+

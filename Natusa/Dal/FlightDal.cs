@@ -12,10 +12,10 @@ namespace Natusa.Dal
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Flight>().ToTable("tblFlights");
+            modelBuilder.Entity<Flights>().ToTable("tblFlights");
         }
 
-        public DbSet<Flight> Flights { get; set;}
+        public DbSet<Flights> Flights { get; set;}
     }
 
 }
