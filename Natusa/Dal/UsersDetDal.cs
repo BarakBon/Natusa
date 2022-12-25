@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using System.Data.Entity;
 using Natusa.Models;
 
 namespace Natusa.Dal
 {
-    public class FlightDal: DbContext
+    public class UsersDetDal : DbContext
     {
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Flights>().ToTable("tblFlights");
+            modelBuilder.Entity<UsersDet>().ToTable("tblUsersDet");
         }
 
-        public DbSet<Flights> Flights { get; set;}
+        public DbSet <UsersDet> UsersDet { get; set; }
     }
-
 }
