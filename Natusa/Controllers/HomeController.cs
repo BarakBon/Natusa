@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Natusa.Models;
+using Natusa.Dal;
 
 namespace Natusa.Controllers
 {
@@ -33,9 +34,16 @@ namespace Natusa.Controllers
             return View();
         }
 
-        public ActionResult registration()
+        public ActionResult Registration()
         {
-            return View();
+            return View("Registration" ,new UsersDet());
+        }
+
+        public ActionResult add(UsersDet user) {
+                UsersDetDal dal = new UsersDetDal();
+                dal.UsersDet.Add(user);
+                dal.SaveChanges();
+                return View("Login", user);
         }
     }
 }

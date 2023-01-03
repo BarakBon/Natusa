@@ -183,7 +183,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Search.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\registration.cshtml" />
+    <Content Include="Views\Home\Registration.cshtml" />
     <Content Include="Views\User\Booking.cshtml" />
   </ItemGroup>
   <ItemGroup>
