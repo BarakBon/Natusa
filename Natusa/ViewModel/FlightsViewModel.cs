@@ -8,8 +8,8 @@ namespace Natusa.ViewModel
 {
     public class FlightsViewModel
     {
-        public Flight flight { get; set; }
+        public Flights flight { get; set; }
 
-        public List<Flight> flightsList { get; set;}
+        public List<Flights> flightsList { get; set;}
     }
 }
