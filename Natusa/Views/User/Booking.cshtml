@@ -1,4 +1,4 @@
-﻿@model Natusa.Models.Flight
+﻿@model Natusa.Models.Flights
 
 @{
     ViewBag.Title = "Booking";
@@ -16,12 +16,15 @@
             <input type="text" id="fname" name="firstname" placeholder="John M. Doe"><br />
             <label for="email">Email</label><br />
             <input type="text" id="email" name="email" placeholder="john@example.com"><br />
+            <label for="passport">Passport</label><br />
+            <input type="text" id="passport" name="passport" placeholder="12345678"><br />
             <label for="adr">Address</label><br />
             <input type="text" id="adr" name="address" placeholder="542 W. 15th Street"><br />
             <label for="city">City</label><br />
             <input type="text" id="city" name="city" placeholder="New York"><br />
             <label for="zip">Zip</label><br />
             <input type="text" id="zip" name="zip" placeholder="10001"><br />
+
         </div>
 
         <div class="payment inputs">
@@ -41,19 +44,31 @@
                 <label for="savePay">Save this data for future bookings</label>
             </span>
         </div>
-        
+
     </div>
     <div>
         <div class="summery">
             <h3>Summery</h3><br />
-            Grid Column 2
+            <table id="flightBookingTbl">
+                <tr id="tableHeaders">
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+                <tr id="tableResults">
+                    <td><input type="text" id="flightID" name="flightID" value="RS851" size="10" readonly /> </td>
+                    <td><input type="text" id="originRes" name="originRes" value="ISRAEL" size="10" readonly /></td>
+                    <td style="padding-right: 50px">></td>
+                    <td><input type="text" id="destRes" name="destRes" value="GERMANY" size="10" readonly /></td>
+                    <td style="padding-right: 50px"></td>
+                    <td id="priceCol"><input type="text" id="priceRes" name="priceRes" value="150$" size="10" readonly /></td>
+                </tr>
+            </table>
         </div>
-
         <input type="submit" value="BOOK MY FLIGHT" id="bookFlightBtn" />
-
-        
     </div>
-    
-
-
 </form>

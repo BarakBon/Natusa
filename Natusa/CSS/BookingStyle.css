@@ -37,6 +37,43 @@ input[type="checkbox"] {
     padding: 2px 16px;
 }
 
+#flightBookingTbl {
+    table-layout: fixed;
+    border-bottom: 1px solid #3495be;
+}
+
+
+#tableHeaders {
+    height:1px;
+}
+
+#tableResults {
+    font-size: 120%;
+    height:50px;
+    width: 100%
+}
+
+
+td > input {
+    text-align: left;
+    background: transparent;
+    border: transparent;
+    font-size: 110%;
+    width: auto;
+}
+    td > input:focus {
+        outline: none;
+    }
+
+#priceCol {
+    border-left: 1px solid #3495be;
+    
+}
+    #priceCol > input {
+        text-align: right;
+        padding-right: 20px;
+    }
+
 #bookFlightBtn {
     margin: 20px 30% ;
     padding: 7px 0px;
@@ -54,3 +91,4 @@ input[type="checkbox"] {
         background-color: #3495be;
         color: white;
     }
+
