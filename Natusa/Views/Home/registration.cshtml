@@ -1,4 +1,6 @@
-﻿@model Natusa.Models.UsersDet
+﻿@using Natusa.ViewModel
+@model UsersViewModel
+
 
 @{
     ViewBag.Title = "Registration";
@@ -6,19 +8,22 @@
 }
 <link href="~/CSS/LoginStyle.css" rel="stylesheet" />
 
-<h2>registration</h2>
+<br />
+<br />
+<br />
 
 <div>
-    <form action="add" method="post" class="form-structor">
+    <form controller="Home" action="add" method="post" class="form-structor">
         <div class="text-structor">
-            <input name="fname" type="text" placeholder="First Name" value="@Model.fname"  class="Login-text" />
+            <input name="fname" type="text" placeholder="First Name" value="@Model.name.fname" class="Login-text" />
             <br />
-            <input name="lname" type="text" placeholder="Last Name" value="@Model.lname" class="Login-text" />
+            <input name="lname" type="text" placeholder="Last Name" value="@Model.name.lname" class="Login-text" />
             <br />
-            <input name="mail" type="email" placeholder="Mail" value="@Model.mail" class="Login-text" />
+            <input name="mail" type="email" placeholder="Mail" value="@Model.name.mail" class="Login-text" />
             <br />
-            <input name="password" type="text" placeholder="Password" value="" class="Login-text" />
+            <input name="password" type="text" placeholder="Password" value="@Model.user.password" class="Login-text" />
             <br />
+            
         </div>
         <div id="test">
             <input type="submit" value="register" id="Login-submit" />

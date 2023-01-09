@@ -5,6 +5,8 @@ using System.Web;
 using static System.Data.Entity.Infrastructure.Design.Executor;
 using System.Xml.Linq;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
+
 
 namespace Natusa.Models
 {
