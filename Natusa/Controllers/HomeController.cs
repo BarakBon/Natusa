@@ -52,12 +52,14 @@ namespace Natusa.Controllers
             UsersDal dal2 = new UsersDal();
             newUser.user = new Users();
             newUser.name = new UsersDet();
+
             newUser.name.mail = Request.Form["mail"];
             newUser.name.fname = Request.Form["fname"];
             newUser.name.lname = Request.Form["lname"];
             newUser.user.userType = "user";
             newUser.user.mail = Request.Form["mail"];
             newUser.user.password= Request.Form["Password"];
+
             if (ModelState.IsValid)
             {
                 dal1.UsersDet.Add(newUser.name);
