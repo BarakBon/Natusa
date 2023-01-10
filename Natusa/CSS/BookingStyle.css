@@ -37,8 +37,82 @@ input[type="checkbox"] {
     padding: 2px 16px;
 }
 
+#flightBookingTbl {
+    table-layout: auto;
+    border-bottom: 1px solid #3495be;
+}
+
+
+#tableHeaders {
+    height:1px;
+}
+
+#tableResults {
+    font-size: 120%;
+    height:50px;
+    width: 100%
+}
+
+
+td > input {
+    text-align: left;
+    background: transparent;
+    border: transparent;
+    font-size: 110%;
+    width: auto;
+}
+    td > input:focus {
+        outline: none;
+    }
+
+#priceCol {
+    border-left: 1px solid #3495be;
+    
+}
+    #priceCol > input {
+        text-align: right;
+        padding-right: 20px;
+    }
+
+
+.totalPriceCont {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 50px;
+    padding-top: 20px;
+}
+    .numTicketsCol > input:focus {
+        outline: none;
+    }
+
+
+#numOfTickets {
+    text-align: left;
+    font-size: 110%;
+    width: 3em;
+}
+
+
+.totalCol {
+    text-align: right;
+    padding-right: 20px;
+    color: #3495be;
+    font-size: 120%;
+}
+    .totalCol > input:focus {
+        outline: none;
+    }
+
+#totalPrice {
+    text-align: right;
+    background: transparent;
+    border: transparent;
+    font-size: 120%;
+    color: #3495be
+}
+
 #bookFlightBtn {
-    margin: 20px 30% ;
+    margin: 20px 30%;
     padding: 7px 0px;
     width: 100%;
     background-color: white;
@@ -54,3 +128,4 @@ input[type="checkbox"] {
         background-color: #3495be;
         color: white;
     }
+
