@@ -24,5 +24,10 @@ namespace Natusa.Controllers
         {
             return View();
         }
+
+        public ActionResult VerifyBooking(String flightID)
+        {
+            return View("Booking");
+        }
     }
 }
