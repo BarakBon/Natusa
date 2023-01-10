@@ -1,5 +1,5 @@
-﻿@model Natusa.ViewModel.FlightsViewModel
-@using Natusa.Models
+﻿@using Natusa.ViewModel
+@model FlightsViewModel
 
 @{
     ViewBag.Title = "Search";
@@ -13,9 +13,9 @@
 <div id="searchPage">
     <form action="SearchResults" method="post">
         <span class="searchInput">
-            <input autocomplete="country" type="text" id="fromCountry" name="fromCountry" placeholder="From?" size="20" />
-            <input autocomplete="country" type="text" id="toCountry" name="toCountry" placeholder="To?" size="20" />
-            <input type="text" id="depDate" name="depDate" placeholder="When?" size="12" onfocus="(this.type='date')" onblur="(this.type='text')" />
+            <input autocomplete="country" type="text" id="fromCountry" name="fromCountry" placeholder="From?" value="@Model.flight.origin" size="20" />
+            <input autocomplete="country" type="text" id="toCountry" name="toCountry" placeholder="To?" value="@Model.flight.destination" size="20" />
+            <input type="text" id="depDate" name="depDate" placeholder="When?" size="12" onfocus="(this.type='date')" onblur="(this.type='text')" value="@Model.flight.flightDate"/>
             <input type="text" id="depTime" name="depTime" placeholder="At?" size="5" onfocus="(this.type='time')" onblur="(this.type='text')" />
         </span>
         <br><br />
@@ -50,13 +50,13 @@
 
         <tr id="tableResults">
             <form action="Booking" method="post">
-                <td><input type="text" id="flightID" name="flightID" value="RS851" size="10" readonly/> </td>
-                <td><input type="text" id="originRes" name="originRes" value="ISRAEL" size="10" readonly /></td>
-                <td><input type="text" id="dateRes" name="dateRes" value="22/12/2022" size="10" readonly /></td>
-                <td><input type="text" id="timeRes" name="timeRes" value="02:25" size="10" readonly /></td>
-                <td><input type="text" id="destRes" name="destRes" value="GERMANY" size="10" readonly /></td>
-                <td><input type="text" id="priceRes" name="priceRes" value="150$" size="10" readonly /></td>
-                <td><input type="submit" id="selectFlight" value="SELECT" /></td>
+            <td><input type="text" id="flightID" name="flightID" value="@Model.outboundFlightsList[0].flightNum" size="10" readonly /> </td>
+            <td><input type="text" id="originRes" name="originRes" value="ISRAEL" size="10" readonly /></td>
+            <td><input type="text" id="dateRes" name="dateRes" value="22/12/2022" size="10" readonly /></td>
+            <td><input type="text" id="timeRes" name="timeRes" value="02:25" size="10" readonly /></td>
+            <td><input type="text" id="destRes" name="destRes" value="GERMANY" size="10" readonly /></td>
+            <td><input type="text" id="priceRes" name="priceRes" value="150$" size="10" readonly /></td>
+            <td><input type="submit" id="selectFlight" value="SELECT" /></td>
             </form>
         </tr>
     </table>
