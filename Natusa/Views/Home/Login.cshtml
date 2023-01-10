@@ -1,27 +1,30 @@
-﻿
+﻿@model Natusa.Models.Users
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/CSS/LoginStyle.css" rel="stylesheet" />
 
-<br /> <br /> <br />
+<br />
+<br />
+<br />
 
 <div>
-    <form class="form-structor">
+    <form controller="Home" action="CheckUser" method="post" class="form-structor">
         <div class="text-structor">
             <img src="~/Content/site_name.png" />
             <br /> <br />
-            <input name="mail" type="email" placeholder="Mail" class="Login-text" />
+            <input name="mail" type="email" placeholder="Mail" value="@Model.mail" class="Login-text" />
             <br />
-            <input name="password" type="text" placeholder="Password" class="Login-text" />
-            <br />
+            <input name="password" type="text" placeholder="Password" value="@Model.password" class="Login-text" />
         </div>
+        @Html.ValidationSummary()
         <div id="test">
             <input type="submit" value="Login" id="Login-submit" />
             <br />
-            <p> <a href="/Home/Registration">not registered?</a> </p> 
+            <p> <a href="/Home/Registration">not registered?</a> </p>
         </div>
+
     </form>
 </div>
 

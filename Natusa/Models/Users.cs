@@ -10,14 +10,18 @@ namespace Natusa.Models
 {
     public class Users
     {
-        [Required]
         public string userType { get; set; }
 
         [Key]
-        [Required]
+        [Required(ErrorMessage ="mail field is required")]
         public string mail { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "password field is required")]
+        //[StringLength(50, MinimumLength = 2, ErrorMessage = "password must be 2 char minimum")]
+        [StringLength(18, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$")]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
         public string password { get; set; }
     }
 }

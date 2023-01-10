@@ -8,6 +8,8 @@ using Natusa.Dal;
 using Natusa.ViewModel;
 using System.Security.Cryptography;
 using System.Web.UI.WebControls;
+using System.Data.Entity.Validation;
+using System.Net.Http.Headers;
 
 namespace Natusa.Controllers
 {
@@ -32,9 +34,23 @@ namespace Natusa.Controllers
             return View();
         }
 
+
+        public ActionResult CheckUser(Users newUser)
+        {
+            //url: "Natusa/View/User/Search"
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction(controllerName: "User", actionName: "search");
+            }
+            else
+            {
+                return View("Login", newUser);
+            }
+        }
+
         public ActionResult Login()
         {
-            return View();
+            return View(new Users());
         }
 
         public ActionResult Registration()
@@ -46,9 +62,10 @@ namespace Natusa.Controllers
         }
 
         [HttpPost]
-        public ActionResult add() {
+        public ActionResult add(UsersViewModel user)
+        {
             UsersViewModel newUser = new UsersViewModel();
-            UsersDetDal dal1 = new UsersDetDal(); 
+            UsersDetDal dal1 = new UsersDetDal();
             UsersDal dal2 = new UsersDal();
             newUser.user = new Users();
             newUser.name = new UsersDet();
@@ -58,7 +75,7 @@ namespace Natusa.Controllers
             newUser.name.lname = Request.Form["lname"];
             newUser.user.userType = "user";
             newUser.user.mail = Request.Form["mail"];
-            newUser.user.password= Request.Form["Password"];
+            newUser.user.password = Request.Form["Password"];
 
             if (ModelState.IsValid)
             {
@@ -69,7 +86,7 @@ namespace Natusa.Controllers
             }
             else
             {
-                //det.name = newUser.name;
+                View("Registration", user);
             }
             return View("Login", newUser);
         }

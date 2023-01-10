@@ -15,19 +15,19 @@
 <div>
     <form controller="Home" action="add" method="post" class="form-structor">
         <div class="text-structor">
-            <input name="fname" type="text" placeholder="First Name" value="@Model.name.fname" class="Login-text" />
+            <input name="fname" type="text" placeholder="First Name" value="@Model.name.fname" class="Login-text" /> @Html.ValidationMessageFor(x => x.name.fname)
             <br />
-            <input name="lname" type="text" placeholder="Last Name" value="@Model.name.lname" class="Login-text" />
+            <input name="lname" type="text" placeholder="Last Name" value="@Model.name.lname" class="Login-text" /> @Html.ValidationMessageFor(x => x.name.lname)
             <br />
-            <input name="mail" type="email" placeholder="Mail" value="@Model.name.mail" class="Login-text" />
+            <input name="mail" type="email" placeholder="Mail" value="@Model.name.mail" class="Login-text" /> @Html.ValidationMessageFor(x => x.name.mail)
             <br />
-            <input name="password" type="text" placeholder="Password" value="@Model.user.password" class="Login-text" />
+            <input name="password" type="text" placeholder="Password" value="@Model.user.password" class="Login-text" /> @Html.ValidationMessageFor(x => x.user.password)
             <br />
-            
         </div>
         <div id="test">
             <input type="submit" value="register" id="Login-submit" />
         </div>
+        
     </form>
 </div>
 
