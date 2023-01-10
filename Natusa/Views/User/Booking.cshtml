@@ -5,6 +5,9 @@
 }
 
 <link href="~/CSS/BookingStyle.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/BookingScript.js"></script>
 
 <h2>Booking</h2>
 
@@ -68,6 +71,15 @@
                     <td id="priceCol"><input type="text" id="priceRes" name="priceRes" value="150$" size="10" readonly /></td>
                 </tr>
             </table>
+            <div class="totalPriceCont">
+                <div class="numTicketsCol">
+                    <label for="numOfTickets">Number of tickets:&nbsp;&nbsp;&nbsp;</label>
+                    <input type="number" id="numOfTickets" name="numOfTickets" min="1" value="1"><br />
+                </div>
+                <div class="totalCol">
+                    <input type="text" id="totalPrice" name="totalPrice" size="5" readonly />$
+                </div>
+            </div>
         </div>
         <input type="submit" value="BOOK MY FLIGHT" id="bookFlightBtn" />
     </div>
