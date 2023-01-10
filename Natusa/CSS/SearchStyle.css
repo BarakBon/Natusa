@@ -55,7 +55,10 @@
     font-size:170%;
 }
 
-#tableResults > td {
+#oneWaytableResults > td {
+    font-size: 120%;
+}
+#twoWaytableResults > td {
     font-size: 120%;
 }
 
