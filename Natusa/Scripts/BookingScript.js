@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    var baseTotal = parseInt($("#priceRes").val().slice(0, -1)); // TODO: need to calc the other row
+    var baseTotal = parseInt($("#onPriceRes").val().slice(0, -1)) + parseInt($("#retPriceRes").val().slice(0, -1));
     $("#totalPrice").val(baseTotal)
     $('#numOfTickets').on('input', function () {
         if ($('#numOfTickets').val() == 0) 
