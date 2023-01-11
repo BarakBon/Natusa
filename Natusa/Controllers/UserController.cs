@@ -34,10 +34,10 @@ namespace Natusa.Controllers
             string destination = Request.Form["toCountry"].ToString();
             string date = Request.Form["depDate"].ToString();
             string retDate = Request.Form["retDate"].ToString();
-            //Request.Form["retDate"].ToString().Equals("")
+            
             if (retDate.Equals(""))
             {
-                List<Flights> oFlight = (from x in dal.Flights where (x.origin.Contains(origin) && x.destination.Contains(destination)) select x).ToList<Flights>();
+                List<Flights> oFlight = (from x in dal.Flights where (x.origin.Contains(origin) && x.destination.Contains(destination) && (x.flightDate).Equals(date)) select x).ToList<Flights>();
                 flightsVM.outboundFlightsList = oFlight;
                 flightsVM.returnFlightsList = new List<Flights>();
             }
