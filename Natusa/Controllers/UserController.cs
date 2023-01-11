@@ -136,5 +136,12 @@ namespace Natusa.Controllers
         {
             return View("Booking");
         }
+
+        public ActionResult Logout()
+        {
+            Session["logedUser"] = "";
+            return RedirectToAction(controllerName: "Home", actionName: "Login");
+        }
     }
+
 }

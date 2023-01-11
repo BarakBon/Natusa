@@ -23,12 +23,16 @@
                     @if (Session["logedUser"] == null || Session["logedUser"].ToString() == "")
                     {
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    }                    
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Search", "Search", "User")</li>
+                    }                        
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     @if (Session["logedUser"] == null || Session["logedUser"].ToString() != "")
-                    {
-                        <li class="logoutBtn">@Html.ActionLink("Logout", "About", "User")</li>
+                    {                        
+                        <li class="logoutBtn">@Html.ActionLink("Logout", "Logout", "User")</li>
                     }
                 </ul>
             </div>
