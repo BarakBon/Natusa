@@ -17,7 +17,7 @@ namespace Natusa.Models
 
         public String origin { get; set;}
 
-        public String flightDate { get; set;} 
+        public string flightDate { get; set;} 
 
         public String flightTime { get; set;}
 
