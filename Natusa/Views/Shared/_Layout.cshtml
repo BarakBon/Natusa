@@ -17,13 +17,19 @@
                     <span class="icon-bar"></span>
                 </button>
                 <img class="site-name navbar-btn " src="~/Content/site_name.png" width="200" height="50" alt="Natusa">
-                @*@Html.ActionLink("Natusa", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @if (Session["logedUser"] == null || Session["logedUser"].ToString() == "")
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    }                    
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @if (Session["logedUser"] == null || Session["logedUser"].ToString() != "")
+                    {
+                        <li class="logoutBtn">@Html.ActionLink("Logout", "About", "User")</li>
+                    }
                 </ul>
             </div>
         </div>

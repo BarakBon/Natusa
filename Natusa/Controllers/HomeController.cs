@@ -13,10 +13,14 @@ using System.Net.Http.Headers;
 
 namespace Natusa.Controllers
 {
+    
     public class HomeController : Controller
     {
+
+
         public ActionResult Index()
         {
+            
             return View();
         }
 
@@ -40,6 +44,7 @@ namespace Natusa.Controllers
             //url: "Natusa/View/User/Search"
             if (ModelState.IsValid)
             {
+                Session["logedUser"] = newUser.mail;
                 return RedirectToAction(controllerName: "User", actionName: "search");
             }
             else

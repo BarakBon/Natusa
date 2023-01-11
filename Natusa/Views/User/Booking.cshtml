@@ -1,4 +1,7 @@
-﻿@model Natusa.Models.Flights
+﻿@using Natusa.ViewModel
+@using Natusa.Models
+@model Natusa.ViewModel.BookingViewModel
+
 
 @{
     ViewBag.Title = "Booking";
@@ -16,32 +19,30 @@
         <div class="billingAddress inputs">
             <h3>Billing Address</h3><br />
             <label for="fname">Full Name</label><br />
-            <input type="text" id="fname" name="firstname" placeholder="John M. Doe"><br />
+            <input type="text" id="fname" name="firstname" value="@Model.user.fname @Model.user.lname" placeholder="John M. Doe"><br />
             <label for="email">Email</label><br />
-            <input type="email" id="email" name="email" placeholder="john@example.com"><br />
+            <input type="email" id="email" name="email" value="@Model.user.mail" placeholder="john@example.com" readonly><br />
             <label for="passport">Passport</label><br />
-            <input type="text" id="passport" name="passport" placeholder="12345678"><br />
+            <input type="text" id="passport" name="passport" value="@Model.user.passportNum" placeholder="12345678"><br />
             <label for="adr">Address</label><br />
-            <input type="text" id="adr" name="address" placeholder="542 W. 15th Street"><br />
-            <label for="city">City</label><br />
-            <input type="text" id="city" name="city" placeholder="New York"><br />
+            <input type="text" id="adr" name="address" value="" placeholder="542 W. 15th Street, New York"><br />
+            <label for="Country">City</label><br />
+            <input type="text" id="Country" name="Country" value="" placeholder="United States"><br />
             <label for="zip">Zip</label><br />
-            <input type="text" id="zip" name="zip" placeholder="10001"><br />
+            <input type="text" id="zip" name="zip" value= "" placeholder="10001"><br />
 
         </div>
 
         <div class="payment inputs">
             <h3>Payment</h3><br />
             <label for="cname">Name on Card</label><br />
-            <input type="text" id="cname" name="cardname" placeholder="John More Doe"><br />
+            <input type="text" id="cname" name="cardname" value="" placeholder="John More Doe"><br />
             <label for="ccnum">Credit card number</label><br />
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444"><br />
-            <label for="expmonth">Exp Month</label><br />
-            <input type="text" id="expmonth" name="expmonth" placeholder="September"><br />
-            <label for="expyear">Exp Year</label><br />
-            <input type="text" id="expyear" name="expyear" placeholder="2030"><br />
-            <label for="cvv">CVV</label><br />
-            <input type="text" id="cvv" name="cvv" placeholder="123"><br />
+            <input type="text" id="ccnum" name="cardnumber" value="@Model.user.creditCard" placeholder="1111-2222-3333-4444"><br />
+            <label for="expdate">Exp Month</label><br />
+            <input type="text" id="expdate" name="expdate" value="@Model.user.expDate" placeholder="09/30"><br />
+            <label for="cvc">CVV</label><br />
+            <input type="text" id="cvc" name="cvc" value="@Model.user.cvc" placeholder="123"><br />
             <span>
                 <input type="checkbox" id="savePay" name="savePay" value="savePay" />
                 <label for="savePay">Save this data for future bookings</label>
@@ -52,7 +53,7 @@
     <div>
         <div class="summery">
             <h3>Summery</h3><br />
-            <table id="flightBookingTbl">
+                <table id="flightBookingTbl">
                 <tr id="tableHeaders">
                     <th></th>
                     <th></th>
@@ -63,23 +64,38 @@
                 </tr>
 
                 <tr id="tableResults">
-                    <td><input type="text" id="flightID" name="flightID" value="RS851" size="10" readonly /> </td>
-                    <td><input type="text" id="originRes" name="originRes" value="ISRAEL" size="10" readonly /></td>
+                    <td><input type="text" id="onFlightID" name="onFlightID" value="@Model.outboundFlights.flightNum" size="10" readonly /> </td>
+                    <td><input type="text" id="onOriginRes" name="onOriginRes" value="@Model.outboundFlights.origin" size="10" readonly /></td>
                     <td style="padding-right: 50px">></td>
-                    <td><input type="text" id="destRes" name="destRes" value="GERMANY" size="10" readonly /></td>
+                    <td><input type="text" id="onDestRes" name="onDestRes" value="@Model.outboundFlights.destination" size="10" readonly /></td>
                     <td style="padding-right: 50px"></td>
-                    <td id="priceCol"><input type="text" id="priceRes" name="priceRes" value="150$" size="10" readonly /></td>
+                    <td id="priceCol"><input type="text" id="onPriceRes" name="onPriceRes" value="@Model.outboundFlights.price$" size="10" readonly /></td>
                 </tr>
-            </table>
-            <div class="totalPriceCont">
-                <div class="numTicketsCol">
-                    <label for="numOfTickets">Number of tickets:&nbsp;&nbsp;&nbsp;</label>
-                    <input type="number" id="numOfTickets" name="numOfTickets" min="1" value="1"><br />
+
+               @if (Model.returnFlights.flightNum != "")
+               {
+                    <tr id="tableResults">
+                        <td><input type="text" id="retFlightID" name="retFlightID" value="@Model.returnFlights.flightNum" size="10" readonly /> </td>
+                        <td><input type="text" id="retOriginRes" name="retOriginRes" value="@Model.returnFlights.origin" size="10" readonly /></td>
+                        <td style="padding-right: 50px">></td>
+                        <td><input type="text" id="retDestRes" name="retDestRes" value="@Model.returnFlights.destination" size="10" readonly /></td>
+                        <td style="padding-right: 50px"></td>
+                        <td id="priceCol"><input type="text" id="retPriceRes" name="retPriceRes" value="@Model.returnFlights.price$" size="10" readonly /></td>
+                    </tr>
+               }
+
+
+                </table>
+
+                <div class="totalPriceCont">
+                    <div class="numTicketsCol">
+                        <label for="numOfTickets">Number of tickets:&nbsp;&nbsp;&nbsp;</label>
+                        <input type="number" id="numOfTickets" name="numOfTickets" min="1" value="1"><br />
+                    </div>
+                    <div class="totalCol">
+                        <input type="text" id="totalPrice" name="totalPrice" size="5" readonly />$
+                    </div>
                 </div>
-                <div class="totalCol">
-                    <input type="text" id="totalPrice" name="totalPrice" size="5" readonly />$
-                </div>
-            </div>
         </div>
         <input type="submit" value="BOOK MY FLIGHT" id="bookFlightBtn" />
     </div>

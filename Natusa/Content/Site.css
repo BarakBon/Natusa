@@ -38,6 +38,10 @@ textarea {
     border-bottom: 2px solid #3495be;
 }
 
+li[class="logoutBtn"] {
+    border-bottom: 2px solid #ff0000;
+}
+
     .navbar-nav > li:hover {
         margin-top: -3px;
         transition: margin 0.2s ease-in-out;
