@@ -23,7 +23,8 @@ namespace Natusa.Models
 
         public int price { get; set; }
 
-        public int availableSeats { get; set;}                
+        public int availableSeats { get; set;}      
     }
+     
 }
 
