@@ -113,7 +113,7 @@ namespace Natusa.Controllers
         public ActionResult Logout()
         {
             Session["logedUser"] = "";
-            return View("login");
+            return RedirectToAction(controllerName: "Home", actionName: "Login");
         }
     }
 
