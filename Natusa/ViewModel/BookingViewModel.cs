@@ -8,6 +8,7 @@ namespace Natusa.ViewModel
 {
     public class BookingViewModel
     {
+        
         public string SavePay { get; set; }
 
         public UsersDet user { get; set; }

@@ -42,7 +42,7 @@ namespace Natusa.Controllers
             return false;
         }
        
-        public ActionResult SearchResults()
+        public ActionResult SearchResults(string button)
         {
             FlightsViewModel flightsVM = new FlightsViewModel();
             FlightsDal dal = new FlightsDal();
@@ -82,12 +82,27 @@ namespace Natusa.Controllers
             }
 
             flightsVM.flight = new Flights();
+
+            if (button == "SELECT")
+            {
+                
+                return View("Booking", Request.Form["flightID"].ToString());
+
+            }
+
             return View("Search", flightsVM);
         }
 
         public ActionResult Booking(String flightID)
         {
-            return View();
+            BookingViewModel booking = new BookingViewModel();
+            booking.SavePay = "";
+            booking.user = new UsersDet();
+            booking.outboundFlights = new Flights();
+            booking.returnFlights = new Flights();
+            booking.outboundBook = new Booked();
+            booking.returnBook = new Booked();
+            return View( booking);
         }
 
         public ActionResult VerifyBooking(String flightID)
