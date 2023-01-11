@@ -13,6 +13,8 @@ using System.Web.UI.WebControls;
 using System.Security.Cryptography;
 using System.Data.SqlTypes;
 using System.Runtime.Remoting.Messaging;
+using System.Web.WebPages;
+using Microsoft.Ajax.Utilities;
 
 namespace Natusa.Controllers
 {
