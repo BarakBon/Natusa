@@ -1,5 +1,12 @@
 ﻿$(document).ready(function () {
-    var baseTotal = parseInt($("#onPriceRes").val().slice(0, -1)) + parseInt($("#retPriceRes").val().slice(0, -1));
+    var toPrice = parseInt($("#onPriceRes").val().slice(0, -1));
+    try {
+        var backPrice = parseInt($("#retPriceRes").val().slice(0, -1));
+    }
+    catch (error) { 
+        backPrice = 0;
+    }
+    var baseTotal = toPrice + backPrice;
     $("#totalPrice").val(baseTotal)
     $('#numOfTickets').on('input', function () {
         if ($('#numOfTickets').val() == 0) 

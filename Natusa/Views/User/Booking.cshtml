@@ -72,7 +72,7 @@
                     <td id="priceCol"><input type="text" id="onPriceRes" name="onPriceRes" value="@Model.outboundFlights.price$" size="10" readonly /></td>
                 </tr>
 
-               @if (Model.returnFlights.flightNum != "")
+               @if (Model.returnFlights.flightNum != null)
                {
                     <tr id="tableResults">
                         <td><input type="text" id="retFlightID" name="retFlightID" value="@Model.returnFlights.flightNum" size="10" readonly /> </td>

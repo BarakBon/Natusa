@@ -42,7 +42,7 @@ namespace Natusa.Controllers
             return false;
         }
        
-        public ActionResult SearchResults(string button)
+        public ActionResult SearchResults()
         {
             FlightsViewModel flightsVM = new FlightsViewModel();
             FlightsDal dal = new FlightsDal();
@@ -60,8 +60,7 @@ namespace Natusa.Controllers
                 time = DateTime.UtcNow.AddHours(2).ToString("HH:mm");
                 
             }
-            
-
+           
             if (retDate.Equals(""))
             {
                 List<Flights> oFlight = (from x in dal.Flights where (x.origin.Contains(origin) && x.destination.Contains(destination) && 
@@ -83,23 +82,51 @@ namespace Natusa.Controllers
 
             flightsVM.flight = new Flights();
 
-            if (button == "SELECT")
+            if (Request.Form["selected"] != null)
             {
-                
-                return View("Booking", Request.Form["flightID"].ToString());
-
+                string flightId = Request.Form["flightID"].ToString();
+                string retFlightID = Request.Form["retFlightID"].ToString();
+                return View("Booking", flightId ,retFlightID);
             }
 
             return View("Search", flightsVM);
         }
 
-        public ActionResult Booking(String flightID)
+        public ActionResult Booking(string flightID, string retFlightID)
         {
+            FlightsDal Fdal = new FlightsDal();
+            UsersDetDal Udal = new UsersDetDal();
             BookingViewModel booking = new BookingViewModel();
             booking.SavePay = "";
+
             booking.user = new UsersDet();
+            booking.user.mail = Session["logedUser"].ToString();
+            List<UsersDet> userDet = (from x in Udal.UsersDet where (x.mail).Equals(booking.user.mail) select x).ToList<UsersDet>();
+            booking.user.fname = userDet[0].fname;
+            booking.user.lname = userDet[0].lname;
+            booking.user.passportNum= userDet[0].passportNum;
+
+            booking.user.creditCard = userDet[0].creditCard;
+            booking.user.expDate = userDet[0].expDate;
+            booking.user.cvc = userDet[0].cvc;
+
             booking.outboundFlights = new Flights();
+            booking.outboundFlights.flightNum = flightID;
+            List<Flights> oFlight = (from x in Fdal.Flights where (x.flightNum).Equals(flightID) select x).ToList<Flights>();
+            booking.outboundFlights.origin = oFlight[0].origin;
+            booking.outboundFlights.destination = oFlight[0].destination;
+            booking.outboundFlights.price = oFlight[0].price;
+
             booking.returnFlights = new Flights();
+            if (retFlightID != null)
+            {
+                booking.returnFlights.flightNum = retFlightID;
+                List<Flights> rFlight = (from x in Fdal.Flights where (x.flightNum).Equals(retFlightID) select x).ToList<Flights>();
+                booking.returnFlights.origin = rFlight[0].origin;
+                booking.returnFlights.destination = rFlight[0].destination;
+                booking.returnFlights.price = rFlight[0].price;
+            }
+
             booking.outboundBook = new Booked();
             booking.returnBook = new Booked();
             return View( booking);
