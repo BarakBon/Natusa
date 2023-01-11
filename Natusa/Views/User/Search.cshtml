@@ -16,7 +16,7 @@
         <span class="searchInput">
             <input autocomplete="country" type="text" id="fromCountry" name="fromCountry" placeholder="From?" value="@Model.flight.origin" size="20" />
             <input autocomplete="country" type="text" id="toCountry" name="toCountry" placeholder="To?" value="@Model.flight.destination" size="20" />
-            <input type="text" id="depDate" name="depDate" placeholder="When?" size="12" onfocus="(this.type='date')" onblur="(this.type='text')" value="@Model.flight.flightDate"/>
+            <input type="text" id="depDate" name="depDate" placeholder="When?" size="12" onfocus="(this.type='date')" onblur="(this.type='text')" value="@Model.flight.flightDate" />
             <input type="text" id="depTime" name="depTime" placeholder="At?" size="5" onfocus="(this.type='time')" onblur="(this.type='text')" />
         </span>
         <br><br />
@@ -36,10 +36,11 @@
     </form>
 
     <br><br />
-    <hr />
-    <br><br />
-    @if (Model.outboundFlightsList.Count() > 0) 
+
+    @if (Model.outboundFlightsList.Count() > 0)
     {
+        <hr />
+        <br><br />
         <table id="flightSearchResults">
             <tr id="tableHeaders">
                 <th><u>Flight ID</u></th>
@@ -49,8 +50,8 @@
                 <th><u>Destination</u></th>
                 <th><u>Price</u></th>
                 <th><u></u></th>
-            </tr> 
-            @if (Model.returnFlightsList.Count() == 0) 
+            </tr>
+            @if (Model.returnFlightsList.Count() == 0)
             {
                 foreach (Flights flight in Model.outboundFlightsList)
                 {
@@ -64,7 +65,8 @@
                             <td><input type="text" id="priceRes" name="priceRes" value="@flight.price$" size="10" readonly /></td>
                             <td><input type="submit" id="selectFlight" value="SELECT" /></td>
                         </form>
-                    </tr>                
+                    </tr>
+
                 }
             }
             else
@@ -73,40 +75,40 @@
                 {
                     foreach (Flights retflight in Model.returnFlightsList)
                     {
-                    <tr id="twoWaytableResults">
-                        <form action="Booking" method="post">
-                            <td>
-                                <input type="text" id="flightID" name="flightID" value="@onBoundflight.flightNum" size="10" readonly /><br />
-                                <input type="text" id="retFlightID" name="retFlightID" value="@retflight.flightNum" size="10" readonly />
-                            </td>
-                            <td>
-                                <input type="text" id="originRes" name="originRes" value="@onBoundflight.origin" size="10" readonly />
-                                <input type="text" id="originRetRes" name="originRetRes" value="@retflight.origin" size="10" readonly />
-                            </td>
-                            <td>
-                                <input type="text" id="dateRes" name="dateRes" value="@onBoundflight.flightDate" size="10" readonly />
-                                <input type="text" id="dateRetRes" name="dateRetRes" value="@retflight.flightDate" size="10" readonly />
-                            </td>
-                            <td>
-                                <input type="text" id="timeRes" name="timeRes" value="@onBoundflight.flightTime" size="10" readonly />
-                                <input type="text" id="timeRetRes" name="timeRetRes" value="@retflight.flightTime" size="10" readonly />
-                            </td>
-                            <td>
-                                <input type="text" id="destRes" name="destRes" value="@onBoundflight.destination" size="10" readonly />
-                                <input type="text" id="destRetRes" name="destRetRes" value="@retflight.destination" size="10" readonly />
-                            </td>
-                            <td>
-                                <input type="text" id="priceRes" name="priceRes" value="@onBoundflight.price$" size="10" readonly />
-                                <input type="text" id="priceRetRes" name="priceRetRes" value="@retflight.price$" size="10" readonly />
-                            </td>
-                            <td><input type="submit" id="selectFlight" value="SELECT" /></td>
-                        </form>
-                    </tr>
+                        <tr id="twoWaytableResults">
+                            <form action="Booking" method="post">
+                                <td>
+                                    <input type="text" id="flightID" name="flightID" value="@onBoundflight.flightNum" size="10" readonly />
+                                    <input type="text" id="retFlightID" name="retFlightID" value="@retflight.flightNum" size="10" readonly />
+                                </td>
+                                <td>
+                                    <input type="text" id="originRes" name="originRes" value="@onBoundflight.origin" size="10" readonly />
+                                    <input type="text" id="originRetRes" name="originRetRes" value="@retflight.origin" size="10" readonly />
+                                </td>
+                                <td>
+                                    <input type="text" id="dateRes" name="dateRes" value="@onBoundflight.flightDate" size="10" readonly />
+                                    <input type="text" id="dateRetRes" name="dateRetRes" value="@retflight.flightDate" size="10" readonly />
+                                </td>
+                                <td>
+                                    <input type="text" id="timeRes" name="timeRes" value="@onBoundflight.flightTime" size="10" readonly />
+                                    <input type="text" id="timeRetRes" name="timeRetRes" value="@retflight.flightTime" size="10" readonly />
+                                </td>
+                                <td>
+                                    <input type="text" id="destRes" name="destRes" value="@onBoundflight.destination" size="10" readonly />
+                                    <input type="text" id="destRetRes" name="destRetRes" value="@retflight.destination" size="10" readonly />
+                                </td>
+                                <td>
+                                    <input type="text" id="priceRes" name="priceRes" value="@onBoundflight.price$" size="10" readonly />
+                                    <input type="text" id="priceRetRes" name="priceRetRes" value="@retflight.price$" size="10" readonly />
+                                </td>
+                                <td><input type="submit" id="selectFlight" value="SELECT" /></td>
+                            </form>
+                        </tr>
                     }
                 }
             }
 
         </table>
     }
-    
+
 </div>
