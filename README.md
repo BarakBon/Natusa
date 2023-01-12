@@ -43,8 +43,11 @@ Download as zip, extract and inside the folder run with your favorite programmin
 Needed up and running microsoft sql database.
 included file to exac in your sql client 
 ```bash
-  database.sql
+  natusa.SQL
 ```
+also needed  to change the connection string to your connection to the database
+
+
 
 ## Authors
 
