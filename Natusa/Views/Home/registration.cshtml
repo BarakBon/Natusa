@@ -4,7 +4,6 @@
 
 @{
     ViewBag.Title = "Registration";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link href="~/CSS/LoginStyle.css" rel="stylesheet" />
 
@@ -14,6 +13,7 @@
 
 <div>
     <form controller="Home" action="add" method="post" class="form-structor">
+        @Html.ValidationSummary()
         <div class="text-structor">
             <input name="fname" type="text" placeholder="First Name" value="@Model.name.fname" class="Login-text" /> @Html.ValidationMessageFor(x => x.name.fname)
             <br />
@@ -21,7 +21,7 @@
             <br />
             <input name="mail" type="email" placeholder="Mail" value="@Model.name.mail" class="Login-text" /> @Html.ValidationMessageFor(x => x.name.mail)
             <br />
-            <input name="password" type="text" placeholder="Password" value="@Model.user.password" class="Login-text" /> @Html.ValidationMessageFor(x => x.user.password)
+            <input name="password" type="text" placeholder="Password" value="@Model.user.password" class="Login-text" required/> @Html.ValidationMessageFor(x => x.user.password)
             <br />
         </div>
         <div id="test">
