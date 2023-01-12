@@ -148,29 +148,26 @@ namespace Natusa.Controllers
 
             string oFlightNum = Request.Form["onFlightID"].ToString();
             int tickets = int.Parse(Request.Form["numOfTickets"]);
+
             List<Flights> flight = (from x in Fdal.Flights where (x.flightNum).Equals(oFlightNum) select x).ToList<Flights>();
-            
+
             if ((flight[0].availableSeats - tickets) > 0)
             {
-                if (Request.Form["savePay"] !=null)
+                if ((Request.Form["retFlightID"] != null) && (flight[0].availableSeats - tickets) > 0)
                 {
+                    string rFlightNum = Request.Form["retFlightID"].ToString();
+                    book.returnBook = new Booked();
+                    List<Flights> Rflight = (from x in Fdal.Flights where (x.flightNum).Equals(rFlightNum) select x).ToList<Flights>();
                     
-                    book.user = new UsersDet();
-                    book.user.mail = Session["logedUser"].ToString();
-                    List<UsersDet> userDet = (from x in Udal.UsersDet where (x.mail).Equals(book.user.mail) select x).ToList<UsersDet>();
-                    book.user.fname = userDet[0].fname;
-                    book.user.lname = userDet[0].lname;
-                    book.user.passportNum = Request.Form["passport"].ToString();
-                    book.user.addres = Request.Form["addres"].ToString();
-                    book.user.Country = Request.Form["Country"].ToString();
-                    book.user.zip = int.Parse(Request.Form["zip"]);
-                    book.user.cardname = Request.Form["cardname"].ToString();
-                    book.user.creditCard = int.Parse(Request.Form["cardnumber"]);
-                    book.user.expDate = Request.Form["expdate"].ToString();
-                    book.user.cvc = int.Parse(Request.Form["cvc"]);
+                    book.returnBook.flightNum = Rflight[0].flightNum.ToString();
+                    book.returnBook.mail = Session["logedUser"].ToString();
+                    book.returnBook.chairsNum = tickets;
+                    Bdal.Booked.Add(book.returnBook);
+                    Bdal.SaveChanges();
 
-                    Udal.UsersDet.AddOrUpdate(book.user);
-                    Udal.SaveChanges();
+                    Rflight[0].availableSeats = Rflight[0].availableSeats - tickets;
+                    Fdal.Flights.AddOrUpdate(Rflight[0]);
+                    Fdal.SaveChanges();
                 }
 
                 book.outboundBook.flightNum = flight[0].flightNum.ToString(); 
@@ -181,8 +178,26 @@ namespace Natusa.Controllers
 
                 flight[0].availableSeats = flight[0].availableSeats - tickets;
                 Fdal.Flights.AddOrUpdate(flight[0]);
-                Fdal.SaveChanges();
+                Fdal.SaveChanges(); 
 
+                if (Request.Form["savePay"] != null)
+                {
+
+                    book.user = new UsersDet();
+                    book.user.mail = Session["logedUser"].ToString();
+                    List<UsersDet> userDet = (from x in Udal.UsersDet where (x.mail).Equals(book.user.mail) select x).ToList<UsersDet>();
+                    userDet[0].passportNum = Request.Form["passport"].ToString();
+                    userDet[0].addres = Request.Form["addres"].ToString();
+                    userDet[0].Country = Request.Form["Country"].ToString();
+                    userDet[0].zip = int.Parse(Request.Form["zip"]);
+                    userDet[0].cardname = Request.Form["cardname"].ToString();
+                    userDet[0].creditCard = int.Parse(Request.Form["cardnumber"]);
+                    userDet[0].expDate = Request.Form["expdate"].ToString();
+                    userDet[0].cvc = int.Parse(Request.Form["cvc"]);
+
+                    Udal.UsersDet.AddOrUpdate(userDet[0]);
+                    Udal.SaveChanges();
+                }
                 return RedirectToAction(controllerName: "User", actionName: "Search");
             }
 

@@ -18,12 +18,9 @@ namespace Natusa.Models
         public string passportNum { get; set; }
 
         [Required]
-        [StringLength(50,MinimumLength = 2 , ErrorMessage = "First name must be 2 char minimum")]
-        //[RegularExpression("^[a-zA-Z]$", ErrorMessage = "First name must contain only letters")]
         public string fname { get; set; }
 
         [Required]
-        [RegularExpression("^[a-zA-Z]$", ErrorMessage = "Last name must contain only letters")]
         public string lname { get; set; }
 
         public string addres { get; set; }

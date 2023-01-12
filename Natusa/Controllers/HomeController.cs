@@ -80,7 +80,7 @@ namespace Natusa.Controllers
             newUser.name.fname = Request.Form["fname"];
             newUser.name.lname = Request.Form["lname"];
             newUser.user.userType = "user";
-            newUser.user.mail = Request.Form["mail"];
+            newUser.user.mail = newUser.name.mail.ToString();
             newUser.user.password = Request.Form["Password"];
 
             if (ModelState.IsValid)
@@ -94,7 +94,7 @@ namespace Natusa.Controllers
             {
                 View("Registration", user);
             }
-            return View("Login", newUser);
+            return View("Login", new Users());
         }
     }
 }
