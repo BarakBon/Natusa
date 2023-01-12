@@ -4,6 +4,7 @@
 
 @{
     ViewBag.Title = "Registration";
+
 }
 <link href="~/CSS/LoginStyle.css" rel="stylesheet" />
 
@@ -15,19 +16,19 @@
     <form controller="Home" action="add" method="post" class="form-structor">
         @Html.ValidationSummary()
         <div class="text-structor">
-            <input name="fname" type="text" placeholder="First Name" value="@Model.name.fname" class="Login-text" /> @Html.ValidationMessageFor(x => x.name.fname)
+            <input name="fname" type="text" placeholder="First Name" value="@Model.name.fname" class="Login-text" pattern="^[A-Za-z].{2,}" title="Must use only letters, and at least 2" required/> 
             <br />
-            <input name="lname" type="text" placeholder="Last Name" value="@Model.name.lname" class="Login-text" /> @Html.ValidationMessageFor(x => x.name.lname)
+            <input name="lname" type="text" placeholder="Last Name" value="@Model.name.lname" class="Login-text" pattern="^[A-Za-z].{2,}" title="Must use only letters, and at least 2" required/> 
             <br />
-            <input name="mail" type="email" placeholder="Mail" value="@Model.name.mail" class="Login-text" /> @Html.ValidationMessageFor(x => x.name.mail)
+            <input name="mail" type="email" placeholder="Mail" value="@Model.name.mail" class="Login-text" required/> 
             <br />
-            <input name="password" type="text" placeholder="Password" value="@Model.user.password" class="Login-text" required/> @Html.ValidationMessageFor(x => x.user.password)
+            <input name="password" type="text" placeholder="Password" value="@Model.user.password" class="Login-text" /> @Html.ValidationMessageFor(x => x.user.password)
             <br />
         </div>
         <div id="test">
             <input type="submit" value="register" id="Login-submit" />
         </div>
-        
+
     </form>
 </div>
 

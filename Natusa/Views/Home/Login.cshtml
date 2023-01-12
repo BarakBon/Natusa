@@ -11,14 +11,16 @@
 
 <div>
     <form controller="Home" action="CheckUser" method="post" class="form-structor">
+        @Html.ValidationSummary()
         <div class="text-structor">
             <img src="~/Content/site_name.png" />
             <br /> <br />
-            <input name="mail" type="email" placeholder="Mail" value="@Model.mail" class="Login-text" />
+            <input name="mail" type="email" placeholder="Mail" value="@Model.mail" class="Login-text" required />
             <br />
-            <input name="password" type="text" placeholder="Password" value="@Model.password" class="Login-text" />
+            <input name="password" type="text" placeholder="Password" value="@Model.password" class="Login-text" 
+                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 characters" required/>
         </div>
-        @Html.ValidationSummary()
+
         <div id="test">
             <input type="submit" value="Login" id="Login-submit" />
             <br />
