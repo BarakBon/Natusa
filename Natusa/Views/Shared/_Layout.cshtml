@@ -20,7 +20,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav nav">
-                    @if (Session["logedUser"] == null || Session["logedUser"].ToString() == "")
+                    @if (Session["logedUser"] == null)
                     {
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     }
@@ -30,7 +30,7 @@
                     }                        
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    @if (Session["logedUser"] != null || Session["logedUser"].ToString() != "")
+                    @if (Session["logedUser"] != null )
                     {                        
                         <li class="logoutBtn">@Html.ActionLink("Logout", "Logout", "User")</li>
                     }
