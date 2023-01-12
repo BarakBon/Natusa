@@ -19,30 +19,30 @@
         <div class="billingAddress inputs">
             <h3>Billing Address</h3><br />
             <label for="fname">Full Name</label><br />
-            <input type="text" id="fname" name="firstname" value="@Model.user.fname @Model.user.lname" placeholder="John M. Doe"><br />
+            <input type="text" id="fname" name="firstname" value="@Model.user.fname @Model.user.lname" pattern="^(\w\w+)\s(\w+)$" title="Must enter full name, only letters" placeholder="John M. Doe" required><br />
             <label for="email">Email</label><br />
             <input type="email" id="email" name="email" value="@Model.user.mail" placeholder="john@example.com" readonly><br />
             <label for="passport">Passport</label><br />
-            <input type="text" id="passport" name="passport" value="@Model.user.passportNum" placeholder="12345678"><br />
+            <input type="text" id="passport" name="passport" value="@Model.user.passportNum" pattern="[0-9].{8}" title="Must be only numbers, 8 digits long." placeholder="12345678" required><br />
             <label for="adr">Address</label><br />
-            <input type="text" id="adr" name="addres" value="@Model.user.addres" placeholder="542 W. 15th Street, New York"><br />
+            <input type="text" id="adr" name="addres" value="@Model.user.addres" placeholder="542 W. 15th Street, New York" required><br />
             <label for="Country">Country</label><br />
-            <input type="text" id="Country" name="Country" value="@Model.user.Country" placeholder="United States"><br />
+            <input type="text" id="Country" name="Country" value="@Model.user.Country" pattern="^[A-Za-z].{2,}" title="Must use only letters, and at least 2" placeholder="United States" required><br />
             <label for="zip">Zip</label><br />
-            <input type="text" id="zip" name="zip" value= "@Model.user.zip" placeholder="10001"><br />
+            <input type="text" id="zip" name="zip" value= "@Model.user.zip" pattern="[0-9]+" placeholder="10001" required><br />
 
         </div>
 
         <div class="payment inputs">
             <h3>Payment</h3><br />
             <label for="cname">Name on Card</label><br />
-            <input type="text" id="cname" name="cardname" value="@Model.user.cardname" placeholder="John More Doe"><br />
+            <input type="text" id="cname" name="cardname" value="@Model.user.cardname" pattern="^(\w\w+)\s(\w+)$" title="Must enter full name, only letters" placeholder="John More Doe" required><br />
             <label for="ccnum">Credit card number</label><br />
-            <input type="text" id="ccnum" name="cardnumber" value="@Model.user.creditCard" placeholder="1111-2222-3333-4444"><br />
+            <input type="text" id="ccnum" name="cardnumber" value="@Model.user.creditCard" pattern="[0-9].{16}" title="Must be only numbers, 16 digits long and no '-' or spaces." placeholder="1111222233334444" required><br />
             <label for="expdate">Exp Month</label><br />
-            <input type="text" id="expdate" name="expdate" value="@Model.user.expDate" placeholder="09/30"><br />
+            <input type="text" id="expdate" name="expdate" value="@Model.user.expDate" pattern="(?:0[1-9]|1[0-2])/[0-9]{2}" title="Enter a date in this format MM/YY" placeholder="09/30" required><br />
             <label for="cvc">CVV</label><br />
-            <input type="text" id="cvc" name="cvc" value="@Model.user.cvc" placeholder="123"><br />
+            <input type="text" id="cvc" name="cvc" value="@Model.user.cvc" pattern="[0-9].{3}" title="Must be only numbers, 3 digits long." placeholder="123" required><br />
             <span>
                 <input type="checkbox" id="savePay" name="savePay" value="savePay" />
                 <label for="savePay">Save this data for future bookings</label>
