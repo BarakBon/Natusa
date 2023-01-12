@@ -42,15 +42,17 @@ namespace Natusa.Controllers
 
         public ActionResult CheckUser(Users newUser)
         {
-            //url: "Natusa/View/User/Search"
-            if (ModelState.IsValid)
+            UsersDal dal = new UsersDal();
+            List<Users> user = (from x in dal.Users where (x.mail).Equals(newUser.mail) select x).ToList<Users>();
+
+            if ((user != null ) && (newUser.password == user[0].password))
             {
                 Session["logedUser"] = newUser.mail;
                 return RedirectToAction(controllerName: "User", actionName: "search");
             }
             else
             {
-                return View("Login", newUser);
+                return View("Login" , new Users());
             }
         }
 

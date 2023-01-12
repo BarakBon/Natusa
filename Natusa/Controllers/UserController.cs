@@ -61,23 +61,87 @@ namespace Natusa.Controllers
                 time = DateTime.UtcNow.AddHours(2).ToString("HH:mm");
                 
             }
-           
+
+            int hour = int.Parse(time.Split(':')[0]);
+            int minute = int.Parse(time.Split(':')[1]);
+            
+            //if there is no flight back
             if (retDate.Equals(""))
             {
                 List<Flights> oFlight = (from x in dal.Flights where (x.origin.Contains(origin) && x.destination.Contains(destination) && 
                                          (x.flightDate).Equals(date)) select x).ToList<Flights>();
-                flightsVM.outboundFlightsList = oFlight;
+                List<Flights> newOflight = new List<Flights>();
+                
+                //if found flight out
+                if (oFlight != null)
+                {
+                    for (var i = 0; i < oFlight.Count; i++)
+                    {
+                        int chour = int.Parse((oFlight[i].flightTime).Split(':')[0]);
+                        int cminute = int.Parse((oFlight[i].flightTime).Split(':')[1]);
+                        if (chour > hour)
+                        {
+                            newOflight.Add(oFlight[i]);
+                        }
+                        else if (chour == hour && cminute > minute)
+                        {
+                            newOflight.Add(oFlight[i]);
+                        }
+                    }
+                    flightsVM.outboundFlightsList = newOflight;
+                }
+                
                 flightsVM.returnFlightsList = new List<Flights>();
             }
+
+            // if there is flight back
             else
             {
                 List<Flights> oFlight = (from x in dal.Flights where (x.origin.Contains(origin) && x.destination.Contains(destination) && 
                                          (x.flightDate).Equals(date)) select x).ToList<Flights>();
                 flightsVM.outboundFlightsList = oFlight;
+                //if found flight out
+                if (oFlight != null)
+                {
+                    List<Flights> newOflight = new List<Flights>();
+                    for (var i = 0; i < oFlight.Count; i++)
+                    {
+                        int chour = int.Parse((oFlight[i].flightTime).Split(':')[0]);
+                        int cminute = int.Parse((oFlight[i].flightTime).Split(':')[1]);
+                        if (chour > hour)
+                        {
+                            newOflight.Add(oFlight[i]);
+                        }
+                        else if (chour == hour && cminute > minute)
+                        {
+                            newOflight.Add(oFlight[i]);
+                        }
+                    }
+                    flightsVM.outboundFlightsList = newOflight;
+                }
                 
                 List<Flights> rFlight = (from x in dal.Flights where (x.origin.Contains(destination) && x.destination.Contains(origin) && 
                                          (x.flightDate).Equals(retDate)) select x).ToList<Flights>();
                 flightsVM.returnFlightsList = rFlight;
+                //if found flights back
+                if (rFlight != null)
+                {
+                    List<Flights> newRflight = new List<Flights>();
+                    for (var i = 0; i < oFlight.Count; i++)
+                    {
+                        int chour = int.Parse((rFlight[i].flightTime).Split(':')[0]);
+                        int cminute = int.Parse((rFlight[i].flightTime).Split(':')[1]);
+                        if (chour > hour)
+                        {
+                            newRflight.Add(rFlight[i]);
+                        }
+                        else if (chour == hour && cminute > minute)
+                        {
+                            newRflight.Add(rFlight[i]);
+                        }
+                    }
+                    flightsVM.outboundFlightsList = newRflight;
+                }
 
             }
 
@@ -191,7 +255,7 @@ namespace Natusa.Controllers
                     userDet[0].Country = Request.Form["Country"].ToString();
                     userDet[0].zip = int.Parse(Request.Form["zip"]);
                     userDet[0].cardname = Request.Form["cardname"].ToString();
-                    userDet[0].creditCard = int.Parse(Request.Form["cardnumber"]);
+                    userDet[0].creditCard = Request.Form["cardnumber"].ToString();
                     userDet[0].expDate = Request.Form["expdate"].ToString();
                     userDet[0].cvc = int.Parse(Request.Form["cvc"]);
 

@@ -31,7 +31,7 @@ namespace Natusa.Models
 
         public string cardname { get; set; }
 
-        public int creditCard { get; set; }
+        public string creditCard { get; set; }
 
         public string expDate { get; set; }
 
