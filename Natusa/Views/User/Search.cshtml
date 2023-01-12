@@ -14,8 +14,8 @@
 <div id="searchPage">
     <form action="SearchResults" method="post">
         <span class="searchInput">
-            <input autocomplete="country" type="text" id="fromCountry" name="fromCountry" placeholder="From?" value="@Model.flight.origin" size="20" />
-            <input autocomplete="country" type="text" id="toCountry" name="toCountry" placeholder="To?" value="@Model.flight.destination" size="20" />
+            <input autocomplete="country" type="text" id="fromCountry" name="fromCountry" placeholder="From?" value="@Model.flight.origin" pattern="^[A-Za-z]*" title="Must use only letters" size="20" />
+            <input autocomplete="country" type="text" id="toCountry" name="toCountry" placeholder="To?" value="@Model.flight.destination" pattern="^[A-Za-z]*" title="Must use only letters" size="20" />
             <input type="text" id="depDate" name="depDate" placeholder="When?" size="12" onfocus="(this.type='date')" onblur="(this.type='text')" value="@Model.flight.flightDate" />
             <input type="text" id="depTime" name="depTime" placeholder="At?" size="5" onfocus="(this.type='time')" onblur="(this.type='text')" />
         </span>
