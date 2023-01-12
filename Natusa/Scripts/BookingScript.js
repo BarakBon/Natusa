@@ -1,10 +1,10 @@
 ﻿$(document).ready(function () {
     var toPrice = parseInt($("#onPriceRes").val().slice(0, -1));
+    var backPrice = 0;
     try {
         var backPrice = parseInt($("#retPriceRes").val().slice(0, -1));
     }
     catch (error) { 
-        backPrice = 0;
     }
     var baseTotal = toPrice + backPrice;
     $("#totalPrice").val(baseTotal)

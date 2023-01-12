@@ -25,18 +25,18 @@
             <label for="passport">Passport</label><br />
             <input type="text" id="passport" name="passport" value="@Model.user.passportNum" placeholder="12345678"><br />
             <label for="adr">Address</label><br />
-            <input type="text" id="adr" name="address" value="" placeholder="542 W. 15th Street, New York"><br />
-            <label for="Country">City</label><br />
-            <input type="text" id="Country" name="Country" value="" placeholder="United States"><br />
+            <input type="text" id="adr" name="addres" value="@Model.user.addres" placeholder="542 W. 15th Street, New York"><br />
+            <label for="Country">Country</label><br />
+            <input type="text" id="Country" name="Country" value="@Model.user.Country" placeholder="United States"><br />
             <label for="zip">Zip</label><br />
-            <input type="text" id="zip" name="zip" value= "" placeholder="10001"><br />
+            <input type="text" id="zip" name="zip" value= "@Model.user.zip" placeholder="10001"><br />
 
         </div>
 
         <div class="payment inputs">
             <h3>Payment</h3><br />
             <label for="cname">Name on Card</label><br />
-            <input type="text" id="cname" name="cardname" value="" placeholder="John More Doe"><br />
+            <input type="text" id="cname" name="cardname" value="@Model.user.cardname" placeholder="John More Doe"><br />
             <label for="ccnum">Credit card number</label><br />
             <input type="text" id="ccnum" name="cardnumber" value="@Model.user.creditCard" placeholder="1111-2222-3333-4444"><br />
             <label for="expdate">Exp Month</label><br />

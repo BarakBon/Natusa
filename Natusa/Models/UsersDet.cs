@@ -26,6 +26,14 @@ namespace Natusa.Models
         [RegularExpression("^[a-zA-Z]$", ErrorMessage = "Last name must contain only letters")]
         public string lname { get; set; }
 
+        public string addres { get; set; }
+
+        public string Country { get; set; }
+
+        public int zip { get; set; }
+
+        public string cardname { get; set; }
+
         public int creditCard { get; set; }
 
         public string expDate { get; set; }

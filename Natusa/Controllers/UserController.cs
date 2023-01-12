@@ -105,7 +105,10 @@ namespace Natusa.Controllers
             booking.user.fname = userDet[0].fname;
             booking.user.lname = userDet[0].lname;
             booking.user.passportNum= userDet[0].passportNum;
-
+            booking.user.addres = userDet[0].addres;
+            booking.user.Country = userDet[0].Country;
+            booking.user.zip = userDet[0].zip;
+            booking.user.cardname = userDet[0].cardname;
             booking.user.creditCard = userDet[0].creditCard;
             booking.user.expDate = userDet[0].expDate;
             booking.user.cvc = userDet[0].cvc;
