@@ -24,27 +24,24 @@ namespace Natusa.Controllers
         // GET: User
         public ActionResult Search()
         {
+            if (Session["logedUser"] == null || Session["logedUser"].ToString() == "")
+            {
+                return RedirectToAction(controllerName: "Home", actionName: "Login");
+            }
             FlightsViewModel fly = new FlightsViewModel();
             fly.flight = new Flights();
             fly.outboundFlightsList = new List<Flights>();
             fly.returnFlightsList = new List<Flights>();
             return View("Search", fly);
         }
-
-        //checks date values as strings
-        public bool dateCheck (string time1, string time2)
-        {
-            DateTime time1Conv = Convert.ToDateTime(time1);
-            DateTime time2Conv = Convert.ToDateTime(time2);
-            if (time1Conv > time2Conv)
-            {
-                return true;
-            }
-            return false;
-        }
        
         public ActionResult SearchResults()
         {
+            if (Session["logedUser"] == null || Session["logedUser"].ToString() == "")
+            {
+                return RedirectToAction(controllerName: "Home", actionName: "Login");
+            }
+
             FlightsViewModel flightsVM = new FlightsViewModel();
             FlightsDal dal = new FlightsDal();
             string origin = Request.Form["fromCountry"].ToString();
@@ -159,6 +156,11 @@ namespace Natusa.Controllers
 
         public ActionResult Booking(string flightID, string retFlightID)
         {
+            if (Session["logedUser"] == null || Session["logedUser"].ToString() == "")
+            {
+                return RedirectToAction(controllerName: "Home", actionName: "Login");
+            }
+
             FlightsDal Fdal = new FlightsDal();
             UsersDetDal Udal = new UsersDetDal();
             BookingViewModel booking = new BookingViewModel();
@@ -203,6 +205,11 @@ namespace Natusa.Controllers
 
         public ActionResult VerifyBooking()
         {
+            if (Session["logedUser"] == null || Session["logedUser"].ToString() == "")
+            {
+                return RedirectToAction(controllerName: "Home", actionName: "Login");
+            }
+
             UsersDetDal Udal = new UsersDetDal();
             FlightsDal Fdal = new FlightsDal();
             BookedDal Bdal= new BookedDal();
@@ -270,7 +277,7 @@ namespace Natusa.Controllers
 
         public ActionResult Logout()
         {
-            Session["logedUser"] = "";
+            Session["logedUser"] = null;
             return RedirectToAction(controllerName: "Home", actionName: "Login");
         }
     }
