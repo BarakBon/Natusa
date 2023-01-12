@@ -46,19 +46,20 @@ namespace Natusa.Controllers
             
             List<Users> user = (from x in dal.Users where (x.mail).Equals(newUser.mail) select x).ToList<Users>();
 
-            if (user != null )  
+            if (ModelState.IsValid)
             {
-                if ((newUser.password == user[0].password))
+                if (user.Count() != 0)
                 {
-                    Session["logedUser"] = newUser.mail;
-                    return RedirectToAction(controllerName: "User", actionName: "search");
+                    if ((newUser.password == user[0].password))
+                    {
+                        Session["logedUser"] = newUser.mail;
+                        return RedirectToAction(controllerName: "User", actionName: "search");
+                    }
                 }
-                return View("Login", new Users());
             }
-            else
-            {
-                return View("Login" , new Users());
-            }
+            return View("Login", new Users());
+            
+           
         }
 
         public ActionResult Login()
