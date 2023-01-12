@@ -15,6 +15,7 @@ using System.Data.SqlTypes;
 using System.Runtime.Remoting.Messaging;
 using System.Web.WebPages;
 using Microsoft.Ajax.Utilities;
+using System.Data.Entity.Migrations;
 
 namespace Natusa.Controllers
 {
@@ -132,12 +133,60 @@ namespace Natusa.Controllers
 
             booking.outboundBook = new Booked();
             booking.returnBook = new Booked();
-            return View( booking);
+
+            return View(booking);
         }
 
-        public ActionResult VerifyBooking(String flightID)
+        public ActionResult VerifyBooking()
         {
-            return View("Booking");
+            UsersDetDal Udal = new UsersDetDal();
+            FlightsDal Fdal = new FlightsDal();
+            BookedDal Bdal= new BookedDal();
+            BookingViewModel book = new BookingViewModel();
+            book.outboundBook= new Booked();
+            FlightsViewModel flights= new FlightsViewModel();
+
+            string oFlightNum = Request.Form["onFlightID"].ToString();
+            int tickets = int.Parse(Request.Form["numOfTickets"]);
+            List<Flights> flight = (from x in Fdal.Flights where (x.flightNum).Equals(oFlightNum) select x).ToList<Flights>();
+            
+            if ((flight[0].availableSeats - tickets) > 0)
+            {
+                if (Request.Form["savePay"] !=null)
+                {
+                    
+                    book.user = new UsersDet();
+                    book.user.mail = Session["logedUser"].ToString();
+                    List<UsersDet> userDet = (from x in Udal.UsersDet where (x.mail).Equals(book.user.mail) select x).ToList<UsersDet>();
+                    book.user.fname = userDet[0].fname;
+                    book.user.lname = userDet[0].lname;
+                    book.user.passportNum = Request.Form["passport"].ToString();
+                    book.user.addres = Request.Form["addres"].ToString();
+                    book.user.Country = Request.Form["Country"].ToString();
+                    book.user.zip = int.Parse(Request.Form["zip"]);
+                    book.user.cardname = Request.Form["cardname"].ToString();
+                    book.user.creditCard = int.Parse(Request.Form["cardnumber"]);
+                    book.user.expDate = Request.Form["expdate"].ToString();
+                    book.user.cvc = int.Parse(Request.Form["cvc"]);
+
+                    Udal.UsersDet.AddOrUpdate(book.user);
+                    Udal.SaveChanges();
+                }
+
+                book.outboundBook.flightNum = flight[0].flightNum.ToString(); 
+                book.outboundBook.mail = Session["logedUser"].ToString();
+                book.outboundBook.chairsNum = tickets;
+                Bdal.Booked.Add(book.outboundBook);
+                Bdal.SaveChanges();
+
+                flight[0].availableSeats = flight[0].availableSeats - tickets;
+                Fdal.Flights.AddOrUpdate(flight[0]);
+                Fdal.SaveChanges();
+
+                return RedirectToAction(controllerName: "User", actionName: "Search");
+            }
+
+            return View("Booking",book);
         }
 
         public ActionResult Logout()

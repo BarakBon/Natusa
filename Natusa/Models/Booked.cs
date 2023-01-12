@@ -8,7 +8,6 @@ namespace Natusa.Models
 {
     public class Booked
     {
-        [Key]
         public string mail { get; set; }
 
         [Key]
