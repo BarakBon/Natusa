@@ -99,11 +99,10 @@ namespace Natusa.Controllers
             {
                 List<Flights> oFlight = (from x in dal.Flights where (x.origin.Contains(origin) && x.destination.Contains(destination) && 
                                          (x.flightDate).Equals(date)) select x).ToList<Flights>();
-                flightsVM.outboundFlightsList = oFlight;
+                List<Flights> newOflight = new List<Flights>();
                 //if found flight out
                 if (oFlight != null)
                 {
-                    List<Flights> newOflight = new List<Flights>();
                     for (var i = 0; i < oFlight.Count; i++)
                     {
                         int chour = int.Parse((oFlight[i].flightTime).Split(':')[0]);
@@ -120,13 +119,14 @@ namespace Natusa.Controllers
                     flightsVM.outboundFlightsList = newOflight;
                 }
                 
+
                 List<Flights> rFlight = (from x in dal.Flights where (x.origin.Contains(destination) && x.destination.Contains(origin) && 
                                          (x.flightDate).Equals(retDate)) select x).ToList<Flights>();
-                flightsVM.returnFlightsList = rFlight;
+                List<Flights> newRflight = new List<Flights>();
+                
                 //if found flights back
                 if (rFlight != null)
                 {
-                    List<Flights> newRflight = new List<Flights>();
                     for (var i = 0; i < oFlight.Count; i++)
                     {
                         int chour = int.Parse((rFlight[i].flightTime).Split(':')[0]);
@@ -140,7 +140,7 @@ namespace Natusa.Controllers
                             newRflight.Add(rFlight[i]);
                         }
                     }
-                    flightsVM.outboundFlightsList = newRflight;
+                    flightsVM.returnFlightsList = newRflight;
                 }
 
             }
@@ -166,7 +166,7 @@ namespace Natusa.Controllers
 
             booking.user = new UsersDet();
             booking.user.mail = Session["logedUser"].ToString();
-            List<UsersDet> userDet = (from x in Udal.UsersDet where (x.mail).Equals(booking.user.mail) select x).ToList<UsersDet>();
+            List<UsersDet> userDet = (from x in Udal.UsersDet where (x.mail).Equals((booking.user.mail)) select x).ToList<UsersDet>();
             booking.user.fname = userDet[0].fname;
             booking.user.lname = userDet[0].lname;
             booking.user.passportNum= userDet[0].passportNum;
