@@ -2,11 +2,6 @@ USE tempdb
 SET DATEFORMAT dmy
 GO 
 
-drop table tblUsers;
-drop table tblFlights;
-drop table tblBooked;
-drop table tblUsersDet;
-
 create table tblUsers(
 userType nvarchar(5) ,
 mail nvarchar(50) PRIMARY KEY,
@@ -44,7 +39,7 @@ expDate nvarchar(5),
 cvc int);
 
 
--- INSERTS --
+----------------------------INSERTS----------------------------
 
 INSERT INTO tblUsers VALUES ('admin' , 'orb@gmail.com' , 'Aa123456')
 INSERT INTO tblFlights VALUES ('AV120', 'Thailand', 'Israel', '2023-02-12', '23:34', '750', 500);
@@ -65,6 +60,25 @@ INSERT INTO tblFlights VALUES ('AV130', 'Israel', 'Italy', '2023-01-30', '11:00'
 INSERT INTO tblFlights VALUES ('AV131', 'Israel', 'Italy', '2023-01-12', '15:45', '500', 500);
 INSERT INTO tblFlights VALUES ('AV132', 'Italy', 'Israel', '2023-01-30', '19:00', '500', 250);
 
-
-
 INSERT INTO tblUsersDet VALUES ('orb@gmail.com' , '12345678' , 'Or', 'Bonker', 'Sesame Street ,Dimona', 'Israel', 1111111, 'Or Card', 12345678 , '12/24', 123)
+
+UPDATE tblFlights
+SET availableSeats = 120
+WHERE flightNum = 'AV120';
+
+----------------------------Admin Use----------------------------
+
+
+---------addding user---------
+-- INSERT INTO tblUsers VALUES ('user type' , 'mail' , 'password')
+
+
+---------adding flight---------
+--INSERT INTO tblFlights VALUES ('flight num', 'destination', 'origin', 'date', 'time', 'price', availableSeats);
+
+
+---------aditing num of seats---------
+--UPDATE <table name>
+--SET <field name> = <value>
+--WHERE <condition>
+
